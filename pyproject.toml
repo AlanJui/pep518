@@ -8,6 +8,7 @@ packages = [{include = "ex_03"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pylint = "^2.15.6"
 
 
 [build-system]
