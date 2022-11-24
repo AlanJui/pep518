@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "ex-03"
+version = "0.1.0"
+description = ""
+authors = ["Alan Jui <alanjui.1960@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ex_03"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pylint = "^2.15.6"
+openpyxl = "^3.0.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+#==============================================
+
+[tool.pyright]
+pythonPlatform = "Darwin"
+pythonVersion = "3.10"
+venv = "python-3.10.6"
+venvPath = "/Users/alanjui/.pyenv/versions"
+
+sexclude = [
+    "**/node_modules",
+    "**/__pycache__"
+]
+reportGeneralTypeIssues = "warning"
+reportMissingImports = true
+reportMissingTypeStubs = "warning"
+reportOptionalMemberAccess = false
+reportUnusedFunction = false
+reportUnusedImport = true
+reportUnusedVariable = false
+stubPath = "typings"
+typeCheckingMode = "basic"
+typeshedPaths = []
+useLibraryCodeForTypes = true

@@ -10,7 +10,6 @@ packages = [{include = "ex_03"}]
 python = "^3.10"
 pylint = "^2.15.6"
 openpyxl = "^3.0.10"
-autopep8 = "^2.0.0"
 
 
 [build-system]
@@ -48,7 +47,6 @@ useLibraryCodeForTypes = true
 #   https://pylint.readthedocs.io/en/latest/
 # - Configuration reference:
 #   http://pylint.pycqa.org/en/latest/technical_reference/features.html
-
 [tool.pylint.MASTER]
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -64,35 +62,12 @@ jobs = "1"
 persistent = "no"
 # Allow to load C extension modules.
 unsafe-load-any-extension = "yes"
-
 [tool.pylint."MESSAGES CONTROL"]
+# bad-continuation: Black does the job, no need to check.
+# design: Do not count lines, members, ..., no use.
+# similarities: Duplication does not mean bad design by itself.
+disable = "bad-continuation,design,similarities"
 enable = "c-extension-no-member"
-disable = [
-  "raw-checker-failed",
-  "bad-inline-option",
-  "locally-disabled",
-  "file-ignored",
-  "suppressed-message",
-  "useless-suppression",
-  "deprecated-pragma",
-  "use-symbolic-message-instead",
-  "too-many-instance-attributes",
-  "len-as-condition",
-  "too-few-public-methods",
-  "anomalous-backslash-in-string",
-  "no-else-return",
-  "simplifiable-if-statement",
-  "too-many-arguments",
-  "duplicate-code",
-  "no-name-in-module",
-  "no-member",
-  "import-error",
-  "missing-module-docstring",
-  "missing-docstring",
-  "invalid-name",
-  "consider-using-enumerate"
-]
-
 [tool.pylint.BASIC]
 # It is OK to have 2-letters identifiers, e.g. 'id' or 'ok'. Also allow
 # long identifiers, cause there is a strong line length limitation which
@@ -107,20 +82,21 @@ method-rgx = "[a-z_][a-z0-9_]{1,64}$"
 # Docstrings are needed everywhere.
 no-docstring-rgx = "^$"
 variable-rgx = "[a-z_][a-z0-9_]{1,64}$"
-
 [tool.pylint.FORMAT]
 max-line-length="88"
 max-module-lines="9000" # Right, over nine thousand!
+[tool.pylint.STRING_QUOTES]
+docstring-quote = "double"
+string-quote = "double-avoid-escape"
+triple-quote = "double"
 # [tool.pylint.PYLINT_DJANGO]
 # # NOTE: When Pytest runs Pylint this setting is overwritten by the
 # # environment variable `DJANGO_SETTINGS_MODULE` set by `pytest-django`.
 # # Anyway, the setting is still useful when VS Code runs Pylint directly.
 # django-settings-module = "web_project.settings"
-
 [tool.pylint.REFACTORING]
 # We have line length 88, no need to check.
 max-nested-blocks = "9000"
-
 [tool.pylint.REPORTS]
 reports = "no"
 score = "no"
